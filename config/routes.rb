@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :movement_types, only: %i[index]
   get "/cookie_click", to: "sessions#click"
 
     # namespace :api do

@@ -1,0 +1,2 @@
+class MovementType < ApplicationRecord
+end
