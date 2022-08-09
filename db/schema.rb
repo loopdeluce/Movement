@@ -10,13 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_08_232937) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_09_225124) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "movement_session_id"
+    t.bigint "movement_type_id"
+    t.string "description"
+    t.string "private_notes"
+    t.boolean "is_stats_public"
+    t.datetime "datetime_activity_finish"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "activity_stats", force: :cascade do |t|
+    t.bigint "activity_id"
+    t.bigint "time_seconds"
+    t.float "distance_miles"
+    t.integer "exertion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movement_sessions", force: :cascade do |t|
+    t.string "title"
+    t.datetime "datetime_session_start"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "movement_types", force: :cascade do |t|
     t.string "movement_type"
     t.string "hex_color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

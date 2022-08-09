@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :users, only [:index]
+  resources :movement_sessions
+  resources :activity_stats
+  resources :activities
+  resources :users, only: [:index]
   resources :movement_types, only: %i[index]
 
     # namespace :api do
