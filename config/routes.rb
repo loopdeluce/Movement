@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :movement_sessions
   resources :activity_stats
   resources :activities
-  resources :users, only: [:index]
+  resources :users, only: [:create]
   resources :movement_types, only: %i[index]
 
     # namespace :api do
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
      #Authentication routes
   post "/signup", to: "users#create"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
   
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end

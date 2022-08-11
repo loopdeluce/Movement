@@ -5,8 +5,9 @@ import TrackerContainer from "./tracking/TrackerContainer";
 
 function FunctionalContainer() {
   return (
-    <>
+    <div>
       <Header />
+
       <Switch>
         <Route path="/home/tracker">
           <TrackerContainer />
@@ -15,7 +16,7 @@ function FunctionalContainer() {
           <MainContainer />
         </Route>
       </Switch>
-    </>
+    </div>
   );
 }
 

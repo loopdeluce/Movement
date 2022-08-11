@@ -5,7 +5,8 @@ class User < ApplicationRecord
   has_many :movement_types, through: :activities
 
 
-  validates :user_type, presence: true
+  validates :email, presence: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
   validates :password, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
