@@ -3,11 +3,31 @@ import { Route, Switch } from "react-router-dom";
 import SessionSummary from "./SessionSummary";
 import MovementChoose from "./MovementChoose";
 import Timer from "./Timer";
-import MovementCard from "./MovementCard";
 
 function TrackerContainer() {
   const [movementTypes, setMovementTypes] = useState([]);
   const [selectedMovement, setSelectedMovement] = useState("eBike Ride");
+  const [sessionStartDatetime, setSessionStartDateTime] = useState("");
+  const [second, setSecond] = useState(
+    parseInt(sessionStorage.getItem("second")) > 0
+      ? sessionStorage.getItem("second")
+      : "00"
+  );
+  const [minute, setMinute] = useState(
+    parseInt(sessionStorage.getItem("minute")) > 0
+      ? sessionStorage.getItem("minute")
+      : "00"
+  );
+  const [hour, setHour] = useState(
+    parseInt(sessionStorage.getItem("hour")) > 0
+      ? sessionStorage.getItem("hour")
+      : "00"
+  );
+  const [counter, setCounter] = useState(
+    parseInt(sessionStorage.getItem("counter")) > 0
+      ? parseInt(sessionStorage.getItem("counter"))
+      : 0
+  );
 
   useEffect(() => {
     fetch("/movement_types")
@@ -17,6 +37,14 @@ function TrackerContainer() {
 
   function handleSelection(currentSelection) {
     setSelectedMovement(currentSelection);
+  }
+
+  function addSessionStartDatetime() {
+    if (sessionStartDatetime === "") {
+      const start = new Date();
+      setSessionStartDateTime(start);
+      sessionStorage.setItem("SessionStart", start);
+    }
   }
 
   return (
@@ -31,7 +59,18 @@ function TrackerContainer() {
         ) : null}
       </Route>
       <Route path="/home/tracker/record">
-        <Timer />
+        <Timer
+          selectedMovement={selectedMovement}
+          second={second}
+          setSecond={setSecond}
+          minute={minute}
+          setMinute={setMinute}
+          hour={hour}
+          setHour={setHour}
+          counter={counter}
+          setCounter={setCounter}
+          addSessionStartDatetime={addSessionStartDatetime}
+        />
       </Route>
       <Route path="/home/tracker/session">
         <SessionSummary />

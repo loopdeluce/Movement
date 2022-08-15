@@ -1,11 +1,15 @@
+import { useHistory } from "react-router-dom";
+
 function MovementCard({
   categoryMovements,
   selectedMovement,
   handleSelection,
 }) {
+  const history = useHistory();
+
   function handleClick(e) {
     handleSelection(e.target.textContent);
-    document.documentElement.scrollTop = 0;
+    history.push("/home/tracker/record");
   }
 
   const movementTypeItems = categoryMovements.map((movement, index) => {

@@ -17,26 +17,16 @@ function MovementChoose({ movementTypes, selectedMovement, handleSelection }) {
           <h1 class=" text-xl sm:text-2xl font-bold text-left text-black sm:text-3xl">
             Choose a Movement
           </h1>
-
           <h2
-            class="text-md sm:text-lg text-left text-jungle sm:text-xl hover:underline"
+            class="text-md sm:text-lg text-left text-jungle hover:underline"
             onClick={handleDismiss}
           >
             Dismiss
           </h2>
         </div>
 
-        {selectedMovement !== "" ? (
-          <div class="flex justify-between px-10 ">
-            <h2>
-              <b>Movement: </b>
-              {selectedMovement}
-            </h2>
-            <button>Start Tracking</button>
-          </div>
-        ) : null}
-
         <div class="border-b-2 border-gray-300 mx-8 "></div>
+
         <div class="text-left px-10 max-h-screen overflow-y-auto">
           {movementTypes.map((category, index) => {
             return (
