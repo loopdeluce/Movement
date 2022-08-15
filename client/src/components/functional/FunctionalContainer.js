@@ -7,7 +7,6 @@ function FunctionalContainer() {
   return (
     <div>
       <Header />
-
       <Switch>
         <Route path="/home/tracker">
           <TrackerContainer />

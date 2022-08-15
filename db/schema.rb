@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_09_225124) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_11_190519) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_09_225124) do
     t.string "hex_color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "movement_type_category"
   end
 
   create_table "users", force: :cascade do |t|
