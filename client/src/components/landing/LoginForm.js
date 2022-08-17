@@ -26,14 +26,20 @@ function LoginForm() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         if (data.errors) {
           setErrors(data.errors);
         } else {
-          sessionStorage.setItem("user", data);
+          sessionStorage.setItem("user", JSON.stringify(data));
           setFormData(initialFormData);
           history.push("/home");
         }
       });
+  }
+
+  function handleSignup(e) {
+    e.preventDefault();
+    history.push("/signup");
   }
 
   return (
@@ -72,12 +78,13 @@ function LoginForm() {
             </div>
           </div>
 
-          {errors
+          {errors.length > 0
             ? errors.map((error) => {
                 return (
                   <>
-                    <p key={error}>{error}</p>
-                    <br />
+                    <p key={error} class="text-sm text-red-600">
+                      {error}
+                    </p>
                   </>
                 );
               })
@@ -92,7 +99,7 @@ function LoginForm() {
 
           <p class="text-sm text-center text-gray-500">
             No account?
-            <a class="underline" href="">
+            <a class="underline" onClick={handleSignup}>
               Sign up
             </a>
           </p>

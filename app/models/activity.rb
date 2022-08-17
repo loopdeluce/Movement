@@ -9,5 +9,6 @@ class Activity < ApplicationRecord
   validates :movement_type_id, presence: true
   validates :is_stats_public, presence: true
   validates :datetime_activity_finish, presence: true
-  validates_numericality_of :is_stats_public, :only_integer => true, :in => 0...1
+  validates :is_stats_public, inclusion: {in: [true, false]}
+
 end

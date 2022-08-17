@@ -63,12 +63,15 @@ function TrackerContainer() {
     if (sessionStartDatetime === "") {
       const start = new Date();
       setSessionStartDateTime(start);
-      sessionStorage.setItem("SessionStart", start);
+      sessionStorage.setItem("sessionStart", start);
+      console.log(sessionStorage.getItem("sessionStart"));
     }
   }
 
-  let testDate = new Date();
-  console.log(testDate);
+  function addMovementFinishDatetime() {
+    const finish = new Date();
+    sessionStorage.setItem("movementFinish", finish);
+  }
 
   return (
     <Switch>
@@ -93,16 +96,16 @@ function TrackerContainer() {
           counter={counter}
           setCounter={setCounter}
           addSessionStartDatetime={addSessionStartDatetime}
+          sessionMovements={sessionMovements}
+          addMovementFinishDatetime={addMovementFinishDatetime}
         />
       </Route>
       <Route path="/home/tracker/session">
         <SessionForm
-          selectedMovement={selectedMovement}
           movementTypes={movementTypes}
           handleSelection={handleSelection}
           handleSessionReset={handleSessionReset}
           handleMovementReset={handleMovementReset}
-          sessionMovements={sessionMovements}
         />
       </Route>
     </Switch>

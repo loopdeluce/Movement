@@ -4,17 +4,16 @@ import { secondsToHoursMinutesSeconds } from "../../helpers";
 import { useHistory } from "react-router-dom";
 
 function SessionForm({
-  selectedMovement,
   movementTypes,
   handleSelection,
   handleSessionReset,
   handleMovementReset,
-  sessionMovements,
 }) {
   const history = useHistory();
   const [formData, setFormData] = useState({
-    session_name: "",
-    movement_type: selectedMovement,
+    title: "",
+    datetime_session_start: sessionStorage.getItem("sessionStart"),
+    movement_type: sessionStorage.getItem("selectedMovement"),
     description: "",
     private_notes: "",
     is_stats_public: true,
@@ -62,6 +61,8 @@ function SessionForm({
     history.push("/home");
   }
 
+  const user = JSON.parse(sessionStorage.getItem("user")).id;
+
   // function handleReset(e) {
   //   e.preventDefault();
   //   sessionStorage.setItem("second", "00");
@@ -81,14 +82,12 @@ function SessionForm({
         <form>
           <input
             type="text"
-            name="session_name"
+            name="title"
             class="rounded-md font-semibold border border-gray-300 text-gray-900 focus:outline-0 focus:border-1 focus:border-black block flex-1 min-w-0 w-full text-sm sm:text-base p-2.5"
             placeholder={`${monthDay(
-              sessionStorage.getItem("SessionStart")
-            )} ${timeOfDay(
-              sessionStorage.getItem("SessionStart")
-            )} ${selectedMovement}`}
-            value={formData.session_name}
+              formData.datetime_session_start
+            )} ${timeOfDay(formData.datetime_session_start)} Session`}
+            value={formData.title}
             onChange={handleFormChange}
           ></input>
           <div class="border-2 border-gray-300 my-5"></div>

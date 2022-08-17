@@ -9,6 +9,8 @@ function Timer({
   counter,
   setCounter,
   addSessionStartDatetime,
+  sessionMovements,
+  addMovementFinishDatetime,
 }) {
   const [isActive, setIsActive] = useState(false);
   const history = useHistory();
@@ -62,9 +64,12 @@ function Timer({
   function handleStartStop() {
     setIsActive((isActive) => !isActive);
     if (isActive) {
+      addMovementFinishDatetime();
       history.push("/home/tracker/session");
     } else {
-      addSessionStartDatetime();
+      if (sessionStorage.getItem("sessionMovements") === null) {
+        addSessionStartDatetime();
+      }
     }
   }
 

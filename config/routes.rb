@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :movement_sessions, only: [:index, :create]
-  resources :activity_stats
-  resources :activities
+  resources :movement_sessions, only: [:index, :create, :update, :destroy]
+  # resources :activity_stats
+  resources :activities, only: [:index, :destroy]
   resources :users, only: [:create]
   resources :movement_types, only: [:index]
+
+  post "/movement_sessions/:movement_session_id/activities", to: "activities#create"
 
     # namespace :api do
       # get "/cookie_click", to: "sessions#click"

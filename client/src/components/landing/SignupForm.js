@@ -37,7 +37,7 @@ function SignupForm() {
             password_confirmation: "",
           });
         } else {
-          sessionStorage.setItem("user", data);
+          sessionStorage.setItem("user", JSON.stringify(data));
           history.push("/home");
           setFormData(initialFormData);
         }
@@ -125,11 +125,12 @@ function SignupForm() {
           </div>
 
           {errors
-            ? errors.map((error) => {
+            ? errors.map((anError) => {
                 return (
                   <>
-                    <p key={error}>{error}</p>
-                    <br />
+                    <p key={anError} class="text-sm text-red-600">
+                      {anError}
+                    </p>
                   </>
                 );
               })
