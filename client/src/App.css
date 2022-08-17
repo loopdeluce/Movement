@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+input:checked ~ .dot {
+  transform: translateX(100%);
+  /* background-color: #d6e1e0; */
+}
+
+input:checked ~ .line {
+  background-color: #336b63;
+}

@@ -3,9 +3,6 @@ import { useHistory } from "react-router-dom";
 
 function Timer({
   selectedMovement,
-  second,
-  minute,
-  hour,
   setSecond,
   setMinute,
   setHour,

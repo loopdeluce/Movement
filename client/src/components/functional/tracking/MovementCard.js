@@ -9,6 +9,7 @@ function MovementCard({
 
   function handleClick(e) {
     handleSelection(e.target.textContent);
+    sessionStorage.setItem("selectedMovement", e.target.textContent);
     history.push("/home/tracker/record");
   }
 

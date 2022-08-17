@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
-import SessionSummary from "./SessionSummary";
+import SessionForm from "./SessionForm";
 import MovementChoose from "./MovementChoose";
 import Timer from "./Timer";
 
 function TrackerContainer() {
   const [movementTypes, setMovementTypes] = useState([]);
   const [selectedMovement, setSelectedMovement] = useState("eBike Ride");
+  const [sessionMovements, setSessionMovements] = useState([]);
   const [sessionStartDatetime, setSessionStartDateTime] = useState("");
   const [second, setSecond] = useState(
     parseInt(sessionStorage.getItem("second")) > 0
@@ -39,6 +40,25 @@ function TrackerContainer() {
     setSelectedMovement(currentSelection);
   }
 
+  function handleMovementReset() {
+    setSelectedMovement("");
+    setSecond("00");
+    setMinute("00");
+    setHour("00");
+    setCounter(0);
+
+    sessionStorage.setItem("selectedMovement", "");
+    sessionStorage.setItem("second", "00");
+    sessionStorage.setItem("minute", "00");
+    sessionStorage.setItem("hour", "00");
+    sessionStorage.setItem("counter", 0);
+  }
+
+  function handleSessionReset() {
+    handleMovementReset();
+    setSessionMovements([]);
+  }
+
   function addSessionStartDatetime() {
     if (sessionStartDatetime === "") {
       const start = new Date();
@@ -46,6 +66,9 @@ function TrackerContainer() {
       sessionStorage.setItem("SessionStart", start);
     }
   }
+
+  let testDate = new Date();
+  console.log(testDate);
 
   return (
     <Switch>
@@ -73,7 +96,14 @@ function TrackerContainer() {
         />
       </Route>
       <Route path="/home/tracker/session">
-        <SessionSummary />
+        <SessionForm
+          selectedMovement={selectedMovement}
+          movementTypes={movementTypes}
+          handleSelection={handleSelection}
+          handleSessionReset={handleSessionReset}
+          handleMovementReset={handleMovementReset}
+          sessionMovements={sessionMovements}
+        />
       </Route>
     </Switch>
   );

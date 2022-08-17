@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :movement_sessions, only: [:index]
+  resources :movement_sessions, only: [:index, :create]
   resources :activity_stats
   resources :activities
   resources :users, only: [:create]

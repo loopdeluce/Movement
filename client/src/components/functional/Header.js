@@ -17,7 +17,7 @@ function Header() {
     <div class="flex justify-between px-7 py-3  items-center rounded-b-lg bg-white">
       <h1 class="font-bold">(the joy of) Movement</h1>
       <button
-        class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-2xl shadow"
         onClick={handleLogout}
       >
         Logout

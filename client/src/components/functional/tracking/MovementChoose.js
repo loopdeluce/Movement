@@ -7,6 +7,7 @@ function MovementChoose({ movementTypes, selectedMovement, handleSelection }) {
   function handleDismiss(e) {
     e.preventDefault();
     handleSelection("Workout");
+    sessionStorage.setItem("selectedMovement", "Workout");
     history.push("/home/tracker/record");
   }
 
