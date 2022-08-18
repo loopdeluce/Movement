@@ -26,7 +26,6 @@ function LoginForm() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.errors) {
           setErrors(data.errors);
         } else {
@@ -47,7 +46,7 @@ function LoginForm() {
       <div class="max-w-lg mx-auto">
         <form
           action=""
-          class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl"
+          class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl bg-white"
           onSubmit={handleLoginSubmit}
         >
           <div>

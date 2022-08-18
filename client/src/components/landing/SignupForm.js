@@ -49,7 +49,7 @@ function SignupForm() {
       <div class="max-w-lg mx-auto">
         <form
           action=""
-          class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl"
+          class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl bg-white"
           onSubmit={handleSignupSubmit}
         >
           <div class="flex gap-x-5">

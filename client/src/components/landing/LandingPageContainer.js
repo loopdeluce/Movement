@@ -4,14 +4,17 @@ import SignupForm from "./SignupForm";
 
 function LandingPageContainer() {
   return (
-    <Switch>
-      <Route path="/signup">
-        <SignupForm />
-      </Route>
-      <Route path="/">
-        <LoginForm />
-      </Route>
-    </Switch>
+    <div class="flex">
+      <h1>the joy of Movement</h1>
+      <Switch>
+        <Route path="/signup">
+          <SignupForm />
+        </Route>
+        <Route path="/">
+          <LoginForm />
+        </Route>
+      </Switch>
+    </div>
   );
 }
 
