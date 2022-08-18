@@ -27,7 +27,7 @@ class MovementSessionsController < ApplicationController
     user = User.find(params[:id])
     activities = Activity.where(user_id: user.id)
     movement_sessions_sorted = activities.map{ |activity| activity.movement_session}.uniq.sort_by{|session| -(session.datetime_session_start.to_i)}
-    render json: movement_sessions_sorted, include: ['activities', 'activities.activity_stat']
+    render json: movement_sessions_sorted, each_serializer: MovementSessionWithSummarySerializer, include: ['activities', 'activities.activity_stat']
   end
 
   private

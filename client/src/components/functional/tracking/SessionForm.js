@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { monthDay, timeOfDay } from "../../helpers";
 import { secondsToHoursMinutesSeconds } from "../../helpers";
 import { useHistory } from "react-router-dom";
+import { NewSessionContext } from "../../../context/newSession";
 
 function SessionForm({
   movementTypes,
@@ -11,6 +12,7 @@ function SessionForm({
 }) {
   const history = useHistory();
   const [showMovementDetails, setShowMovementDetails] = useState(true);
+  const [sessionCounter, handleNewSession] = useContext(NewSessionContext);
   const [formData, setFormData] = useState({
     title:
       sessionStorage.getItem("sessionTitle") === null
@@ -32,6 +34,14 @@ function SessionForm({
 
     if (e.target.type === "checkbox") {
       value = e.target.checked;
+    }
+
+    if (e.target.name === "movement_type") {
+      sessionStorage.setItem("selectedMovement", e.target.value);
+    }
+
+    if (e.target.name === "title") {
+      sessionStorage.setItem("sessionTitle", e.target.value);
     }
 
     setFormData({ ...formData, [name]: value });
@@ -63,6 +73,7 @@ function SessionForm({
         .then((session) => {
           sessionStorage.setItem("sessionId", session.id);
           postMovement(session.id).then(() => {
+            handleNewSession();
             handleSessionReset();
             history.push("/home");
           });
@@ -73,6 +84,7 @@ function SessionForm({
     ) {
       const sessionId = sessionStorage.getItem("sessionId");
       postMovement(sessionId).then(() => {
+        handleNewSession();
         handleSessionReset();
         history.push("/home");
       });
@@ -80,6 +92,7 @@ function SessionForm({
       sessionMovementsDoNotExist() === false &&
       showMovementDetails == false
     ) {
+      handleNewSession();
       handleSessionReset();
       history.push("/home");
     }

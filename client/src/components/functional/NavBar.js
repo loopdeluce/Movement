@@ -22,7 +22,7 @@ function NavBar() {
   }
 
   return (
-    <div class="flex flex-col gap-3  mt-20  sm:ml-10 ml-5">
+    <div class="flex flex-col gap-3  mt-10  sm:ml-10 ml-5">
       <button
         disabled
         class="text-left text-white font-semibold text-sm sm:text-lg py-2 px-5"

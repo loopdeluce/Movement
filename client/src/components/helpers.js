@@ -30,3 +30,40 @@ export function secondsToHoursMinutesSeconds(seconds) {
 
   return `${computedHour}:${computedMinute}:${computedSecond}`;
 }
+
+export function buildFormattedDatetime(date = new Date()) {
+  const formattedDate = new Date(date).toString();
+  let hours = new Date(date).getHours();
+  hours = ((hours + 11) % 12) + 1;
+  hours = hours.toString();
+  const minutes = new Date(date).getMinutes().toString().padStart(2, "0");
+  return `${formattedDate.substring(0, 15)} • ${hours.padStart(
+    2,
+    "0"
+  )}:${minutes} ${hours > 11 ? "PM" : "AM"}`;
+}
+
+export function quantitativeExertion(exertion) {
+  switch (exertion) {
+    case 1:
+      return "Restorative";
+    case 2:
+      return "Very Easy";
+    case 3:
+      return "Easy";
+    case 4:
+      return "Moderate";
+    case 5:
+      return "Moderate";
+    case 6:
+      return "Moderate";
+    case 7:
+      return "Somewhat Hard";
+    case 8:
+      return "Hard";
+    case 9:
+      return "Difficult";
+    case 10:
+      return "Max Effort";
+  }
+}
