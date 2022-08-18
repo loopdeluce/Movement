@@ -7,7 +7,6 @@ class Activity < ApplicationRecord
   validates :user_id, presence: true
   validates :movement_session_id, presence: true
   validates :movement_type_id, presence: true
-  validates :is_stats_public, presence: true
   validates :datetime_activity_finish, presence: true
   validates :is_stats_public, inclusion: {in: [true, false]}
 

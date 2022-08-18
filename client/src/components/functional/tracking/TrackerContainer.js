@@ -6,7 +6,7 @@ import Timer from "./Timer";
 
 function TrackerContainer() {
   const [movementTypes, setMovementTypes] = useState([]);
-  const [selectedMovement, setSelectedMovement] = useState("eBike Ride");
+  const [selectedMovement, setSelectedMovement] = useState("");
   const [sessionMovements, setSessionMovements] = useState([]);
   const [sessionStartDatetime, setSessionStartDateTime] = useState("");
   const [second, setSecond] = useState(
@@ -52,19 +52,25 @@ function TrackerContainer() {
     sessionStorage.setItem("minute", "00");
     sessionStorage.setItem("hour", "00");
     sessionStorage.setItem("counter", 0);
+    sessionStorage.setItem("movementFinish", "");
   }
 
   function handleSessionReset() {
     handleMovementReset();
+
     setSessionMovements([]);
+    setSessionStartDateTime("");
+    sessionStorage.removeItem("sessionId");
+    sessionStorage.removeItem("sessionMovements");
+    sessionStorage.removeItem("sessionStart");
+    sessionStorage.removeItem("sessionTitle");
   }
 
   function addSessionStartDatetime() {
-    if (sessionStartDatetime === "") {
+    if (sessionStorage.getItem("sessionStart") === null) {
       const start = new Date();
       setSessionStartDateTime(start);
       sessionStorage.setItem("sessionStart", start);
-      console.log(sessionStorage.getItem("sessionStart"));
     }
   }
 

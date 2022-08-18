@@ -26,7 +26,7 @@ class MovementSessionsController < ApplicationController
   private
 
   def movement_session_params
-    params.permit(:title, :datetime_session_start)
+    params.permit(:title, :datetime_session_start, :id)
   end
 
   def find_movement_session
