@@ -16,7 +16,7 @@ function MyMovementCard({
 }) {
   const activityBlurbs = activities.map((activity) => {
     return (
-      <div class="mt-4 sm:pr-8">
+      <div class="sm:pr-8">
         <h2 class="text-base text-gray-700 text-left font-bold">
           {activity.movement_type} •{" "}
           <span class="font-normal text-gray-600 text-sm">
@@ -40,11 +40,12 @@ function MyMovementCard({
             {activity.private_notes}
           </p>
         )}
+        <div class="mb-1"></div>
       </div>
     );
   });
   return (
-    <div class="movement_card relative block p-8 border border-gray-100 rounded-lg bg-white ml-24 my-5 ">
+    <div class="relative p-8 border border-gray-100 rounded-lg bg-white mt-3 mb-5 ">
       <span class="absolute inset-x-0 bottom-0 rounded-b-lg h-2 bg-gradient-to-r from-jungle_100 via-jungle_500 to-jungle_800 shadow-lxl"></span>
 
       <div class="justify-between sm:flex">
@@ -63,7 +64,7 @@ function MyMovementCard({
         </div> */}
       </div>
 
-      <dl class="flex mt-3">
+      <dl class="flex mt-3 mb-4">
         <div class="flex flex-col-reverse">
           <dt class="text-sm font-medium text-gray-600">{total_activities}</dt>
           <dd class="text-xs text-gray-500">Movements</dd>
@@ -85,7 +86,7 @@ function MyMovementCard({
       {activities.length > 1 ? (
         activityBlurbs
       ) : (
-        <div class="mt-4 sm:pr-8">
+        <div class=" sm:pr-8">
           <h2 class="text-base text-gray-700 text-left font-bold">
             {activities[0].movement_type} •{" "}
             <span class="font-normal text-gray-600 text-sm">

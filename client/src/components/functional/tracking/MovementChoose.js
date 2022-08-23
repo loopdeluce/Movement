@@ -13,7 +13,7 @@ function MovementChoose({ movementTypes, selectedMovement, handleSelection }) {
 
   return (
     <div class="flex justify-center">
-      <nav class="space-y-2 pb-5 my-10 bg-white rounded-2xl w-9/12">
+      <div class="space-y-2 pb-5 my-10 bg-white rounded-2xl w-9/12">
         <div class="flex pt-7 px-10  justify-between mb-5 ">
           <h1 class=" text-xl sm:text-2xl font-bold text-left text-black sm:text-3xl">
             Choose a Movement
@@ -47,7 +47,7 @@ function MovementChoose({ movementTypes, selectedMovement, handleSelection }) {
             );
           })}
         </div>
-      </nav>
+      </div>
     </div>
   );
 }

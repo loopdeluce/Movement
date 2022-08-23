@@ -28,7 +28,7 @@ function SessionForm({
   });
 
   function handleFormChange(e) {
-    e.preventDefault();
+    // e.preventDefault();
     const name = e.target.name;
     let value = e.target.value;
 
@@ -75,6 +75,7 @@ function SessionForm({
           postMovement(session.id).then(() => {
             handleNewSession();
             handleSessionReset();
+            sessionStorage.setItem("chosenPage", "My Movement Details");
             history.push("/home");
           });
         });
@@ -86,6 +87,7 @@ function SessionForm({
       postMovement(sessionId).then(() => {
         handleNewSession();
         handleSessionReset();
+        sessionStorage.setItem("chosenPage", "My Movement Details");
         history.push("/home");
       });
     } else if (
@@ -94,6 +96,7 @@ function SessionForm({
     ) {
       handleNewSession();
       handleSessionReset();
+      sessionStorage.setItem("chosenPage", "My Movement Details");
       history.push("/home");
     }
   }
@@ -139,6 +142,7 @@ function SessionForm({
     } else {
       deleteSession().then(() => {
         handleSessionReset();
+        sessionStorage.setItem("chosenPage", "My Movement Details");
         history.push("/home");
       });
     }

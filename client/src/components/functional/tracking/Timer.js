@@ -93,8 +93,11 @@ function Timer({
         <div class="my-20">
           <h3 class="text-lg text-gray-400">TIME:</h3>
           <div class="font-extrabold text-6xl">
-            {sessionStorage.getItem("hour")}:{sessionStorage.getItem("minute")}:
-            {sessionStorage.getItem("second")}
+            {sessionStorage.getItem("hour") === null
+              ? "00"
+              : sessionStorage.getItem("hour")}
+            :{sessionStorage.getItem("minute") === null ? "00" : sessionStorage.getItem("minute")}:
+            {sessionStorage.getItem("second") === null ? "00" : sessionStorage.getItem("second")}
           </div>
         </div>
 

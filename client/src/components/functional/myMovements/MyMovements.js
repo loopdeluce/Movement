@@ -17,14 +17,14 @@ function MyMovements() {
   }, [sessionCounter]);
 
   return (
-    <div class="mt-10 space-y-2">
-      <div class="container flex justify-center flex-col  overflow-y-scroll">
+    <div class="flex grow mt-10 ml-24">
+      <div class="container flex justify-center flex-col">
         {myMovementSessions.length > 0 ? (
           myMovementSessions.map((session, index) => {
             return <MyMovementCard key={index} session={session} />;
           })
         ) : (
-          <div class="bg-white rounded-lg overflow-y-auto">
+          <div class="bg-white rounded-lg h-24 m-24">
             <h1>Record a movement to get started!</h1>
           </div>
         )}

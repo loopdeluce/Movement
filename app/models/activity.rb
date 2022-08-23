@@ -10,4 +10,7 @@ class Activity < ApplicationRecord
   validates :datetime_activity_finish, presence: true
   validates :is_stats_public, inclusion: {in: [true, false]}
 
+  
+
+  private
 end
