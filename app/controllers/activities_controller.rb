@@ -56,6 +56,7 @@ class ActivitiesController < ApplicationController
           movement_hash[category] += 1
           movement_hash
         end
+        all_frequency = all_frequency.sort_by{|key, value| value}.reverse.to_h
        
         (1..12).each do |n|
           wanted_activities = filtered_movements.where('extract(month from datetime_activity_finish) = ?', n)
@@ -82,6 +83,7 @@ class ActivitiesController < ApplicationController
           movement_hash[category] += movement.activity_stat.time_seconds
           movement_hash
         end
+        all_frequency = all_frequency.sort_by{|key, value| value}.reverse.to_h
 
         (1..12).each do |n|
           wanted_activities = filtered_movements.where('extract(month from datetime_activity_finish) = ?', n)
@@ -89,7 +91,7 @@ class ActivitiesController < ApplicationController
           zero2 = 0
           if(wanted_activities.length > 0)
             exertion_average = (wanted_activities.inject(0){|sum, activity| sum + activity.activity_stat.exertion}.to_f / wanted_activities.length.to_f).round(1)
-            month_activities = (wanted_activities.inject(0){|sum, activity| sum + activity.activity_stat.time_seconds})
+            month_activities = ((wanted_activities.inject(0){|sum, activity| sum + activity.activity_stat.time_seconds}).to_f / 3600).round(1)
           else
             exertion_average = 0
             month_activities = 0
@@ -106,8 +108,8 @@ class ActivitiesController < ApplicationController
       
       summary_hash[:total_movements] = filtered_movements.length
 
-      longest_activity_hours = filtered_movements.joins(:activity_stat).merge(ActivityStat.order(time_seconds: :desc)).first.activity_stat.time_seconds
-      summary_hash[:longest_movement_hours] = (longest_activity_hours.to_f / 3600).round(1)
+      longest_activity_hours = filtered_movements.joins(:activity_stat).merge(ActivityStat.order(time_seconds: :desc)).first.activity_stat.time_seconds.to_f
+      summary_hash[:longest_movement_hours] = (longest_activity_hours/ 3600).round(1)
       
       max_movement = movement_type_frequency.max_by{|key, value| value}
       summary_hash[:popular_movement] = max_movement

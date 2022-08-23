@@ -10,14 +10,14 @@ function NavBar() {
 
   function handleNavigation(e) {
     e.preventDefault();
-    setChosenPage(e.target.textContent)
+    setChosenPage(e.target.textContent);
     sessionStorage.setItem("chosenPage", e.target.textContent);
     switch (e.target.textContent) {
       case "My Movement Details":
-        history.push("/home");
+        history.push("/home/details");
         break;
       case "My Movement Summary":
-        history.push("/home/summary");
+        history.push("/home");
         break;
       case "Record a Movement":
         history.push("/home/tracker/movement");
@@ -35,24 +35,31 @@ function NavBar() {
       </button>
       <div class="border-2 border-gray-200 rounded-lg"></div>
       <button
-        class={`text-left text-white font-semibold text-sm sm:text-lg hover:bg-jungle_500 py-2 px-5 hover:rounded-xl ${
-          sessionStorage.getItem("chosenPage") === "My Movement Details" ? "bg-jungle_500 rounded-xl" : null
-        } `}
-        onClick={handleNavigation}
-      >
-        My Movement Details
-      </button>
-      <button
         class={`text-left text-white font-semibold text-lg hover:bg-jungle_500 py-2 px-5 hover:rounded-xl ${
-          sessionStorage.getItem("chosenPage") === "My Movement Summary" ? "bg-jungle_500 rounded-xl" : null
+          sessionStorage.getItem("chosenPage") === "My Movement Summary"
+            ? "bg-jungle_500 rounded-xl"
+            : null
         }`}
         onClick={handleNavigation}
       >
         My Movement Summary
       </button>
       <button
+        class={`text-left text-white font-semibold text-sm sm:text-lg hover:bg-jungle_500 py-2 px-5 hover:rounded-xl ${
+          sessionStorage.getItem("chosenPage") === "My Movement Details"
+            ? "bg-jungle_500 rounded-xl"
+            : null
+        } `}
+        onClick={handleNavigation}
+      >
+        My Movement Details
+      </button>
+
+      <button
         class={`text-left text-white font-semibold text-lg hover:bg-jungle_500 py-2 px-5 hover:rounded-xl ${
-          sessionStorage.getItem("chosenPage") === "Record a Movement" ? "bg-jungle_500 rounded-xl" : null
+          sessionStorage.getItem("chosenPage") === "Record a Movement"
+            ? "bg-jungle_500 rounded-xl"
+            : null
         }`}
         onClick={handleNavigation}
       >

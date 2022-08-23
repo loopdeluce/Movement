@@ -5,11 +5,11 @@ import SummaryContainer from "./summary/SummaryContainer";
 function InformationContainer() {
   return (
     <Switch>
-      <Route path="/home/summary">
-        <SummaryContainer />
+      <Route path="/home/details">
+        <MyMovements />
       </Route>
       <Route path="/home">
-        <MyMovements />
+        <SummaryContainer />
       </Route>
     </Switch>
   );

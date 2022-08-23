@@ -1,5 +1,6 @@
 function UOMFilter({ unitOfMeasure, handleUnitOfMeasureChange }) {
   function handleRadioChoose(e) {
+    e.preventDefault();
     handleUnitOfMeasureChange(e.target.id);
   }
 

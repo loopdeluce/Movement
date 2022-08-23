@@ -1,10 +1,13 @@
 import Chart from "react-apexcharts";
 
 function ActivityDonut() {
+  const donut_data = JSON.parse(sessionStorage.getItem("summary")).donut_hash;
   const chartData = {
-    options: {},
-    series: [44, 55, 41, 17, 15],
-    labels: ["A", "B", "C", "D", "E"],
+    options: {
+      labels: donut_data.labels,
+      legend: { horizontalAlign: "left" },
+    },
+    series: donut_data.series,
   };
 
   return (
@@ -15,6 +18,7 @@ function ActivityDonut() {
         type="donut"
         width="500"
         class="p-5"
+        onClick={(e) => console.log(e.target)}
       />
     </div>
   );

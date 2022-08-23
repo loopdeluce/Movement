@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   post "/movement_sessions/:movement_session_id/activities", to: "activities#create"
   get "/users/:id/movement_sessions", to: "movement_sessions#user_movement_sessions_index"
-  get "users/:id/activities/:uom/:year", to: "activities#summary"
+  get "/users/:id/activities/:uom/:year", to: "activities#summary"
 
     # namespace :api do
       # get "/cookie_click", to: "sessions#click"
