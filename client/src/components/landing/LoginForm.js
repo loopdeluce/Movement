@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../context/user";
 
-function LoginForm() {
+function LoginForm({ setReadyToLoad }) {
   const initialFormData = {
     email: "",
     password: "",
@@ -35,6 +35,7 @@ function LoginForm() {
           sessionStorage.setItem("chosenPage", "My Movement Summary");
           sessionStorage.setItem("user", JSON.stringify(data));
           setFormData(initialFormData);
+          setReadyToLoad(true);
           history.push("/home");
         }
       });

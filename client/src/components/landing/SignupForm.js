@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../context/user";
 
-function SignupForm() {
+function SignupForm({ setReadyToLoad }) {
   const initialFormData = {
     first_name: "",
     last_name: "",
@@ -41,6 +41,7 @@ function SignupForm() {
         } else {
           handleUserChange(data);
           sessionStorage.setItem("user", JSON.stringify(data));
+          setReadyToLoad(true);
           history.push("/home");
           setFormData(initialFormData);
         }

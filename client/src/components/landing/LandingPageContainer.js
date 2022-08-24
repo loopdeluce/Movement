@@ -2,7 +2,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 
-function LandingPageContainer() {
+function LandingPageContainer({ setReadyToLoad }) {
   return (
     <div class="flex flex-col justify-center md:flex-row md:items-center md:justify-around h-screen">
       <div class="mt-200 sm:mt-0">
@@ -14,10 +14,10 @@ function LandingPageContainer() {
       <div class="justify-justify-around">
         <Switch>
           <Route path="/signup">
-            <SignupForm />
+            <SignupForm setReadyToLoad={setReadyToLoad} />
           </Route>
           <Route path="/">
-            <LoginForm />
+            <LoginForm setReadyToLoad={setReadyToLoad} />
           </Route>
         </Switch>
       </div>

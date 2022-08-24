@@ -2,14 +2,14 @@ import { Route, Switch } from "react-router-dom";
 import MyMovements from "./myMovements/MyMovements";
 import SummaryContainer from "./summary/SummaryContainer";
 
-function InformationContainer() {
+function InformationContainer({ readyToLoad }) {
   return (
     <Switch>
       <Route path="/home/details">
         <MyMovements />
       </Route>
       <Route path="/home">
-        <SummaryContainer />
+        <SummaryContainer readyToLoad={readyToLoad} />
       </Route>
     </Switch>
   );

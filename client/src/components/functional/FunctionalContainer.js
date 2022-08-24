@@ -3,7 +3,7 @@ import Header from "./Header";
 import MainContainer from "./MainContainer";
 import TrackerContainer from "./tracking/TrackerContainer";
 
-function FunctionalContainer() {
+function FunctionalContainer({ readyToLoad }) {
   return (
     <div>
       <Header />
@@ -12,7 +12,7 @@ function FunctionalContainer() {
           <TrackerContainer />
         </Route>
         <Route path="/home">
-          <MainContainer />
+          <MainContainer readyToLoad={readyToLoad} />
         </Route>
       </Switch>
     </div>

@@ -12,6 +12,13 @@ class UsersController < ApplicationController
     end
   end
 
+  ######## /me
+  def show
+    user = User.find_by!(id: session[:user_id])
+    render json: user
+  end
+
+
   private
 
   def user_params
