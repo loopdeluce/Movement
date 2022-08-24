@@ -11,6 +11,10 @@ module.exports = {
         jungle_800: "#244b45",
       },
     },
+    fontFamily: {
+      heading_cursive: ["Zeyada", "cursive"],
+      heading_bold: ["Contrail One", "cursive"],
+    },
   },
   plugins: [],
 };

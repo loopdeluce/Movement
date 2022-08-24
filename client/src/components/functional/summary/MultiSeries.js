@@ -1,9 +1,7 @@
 import Chart from "react-apexcharts";
 function MultiSeries() {
-  // console.log(JSON.parse(sessionStorage.getItem("summary")));
-
+  console.log(JSON.parse(sessionStorage.getItem("summary")));
   const multiData = JSON.parse(sessionStorage.getItem("summary")).multiple_hash;
-  console.log(multiData);
   const chartData = {
     options: {
       labels: [
@@ -20,15 +18,38 @@ function MultiSeries() {
         "Nov",
         "Dec",
       ],
-      legend: { horizontalAlign: "left" },
+      fill: {
+        colors: ["#244b45", "#ebf0ef"],
+      },
+      tooltip: {
+        marker: {
+          show: false,
+        },
+      },
+      chart: { height: "200px", toolbar: { show: false } },
+      dataLabels: { enabled: false },
+      legend: {
+        horizontalAlign: "center",
+        fontSize: "16px",
+        labels: { colors: ["#244b45", "#d6e1e0"] },
+        markers: {
+          fillColors: ["#244b45", "#d6e1e0"],
+        },
+      },
+      markers: {
+        colors: ["#244b45", "#d6e1e0"],
+      },
+      stroke: { curve: "smooth", colors: ["#244b45", "#d6e1e0"] },
       yaxis: [
         {
           title: {
             text: "Average Exertion",
+            style: { fontSize: "16px" },
           },
           min: 1,
           max: 10,
           tickAmount: 6,
+          labels: { style: { fontSize: "16px" } },
         },
         {
           opposite: true,
@@ -36,9 +57,12 @@ function MultiSeries() {
             text: `Total ${
               sessionStorage.getItem("uom") === "time" ? "Hours" : "Number"
             } of Movements`,
+            style: { fontSize: "16px" },
           },
+          labels: { style: { fontSize: "16px" } },
         },
       ],
+      xaxis: { labels: { style: { fontSize: "16px" } } },
     },
     series: [
       {
@@ -55,13 +79,13 @@ function MultiSeries() {
   };
 
   return (
-    <div class="mt-10 ml-10 bg-white w-max rounded-lg">
+    <div class="my-3 ml-10 bg-white w-max rounded-lg">
       <Chart
         options={chartData.options}
         series={chartData.series}
         type="line"
-        width="500"
-        class="p-5"
+        width="800px"
+        class="p-5 shadow-xl rounded-lg"
         onClick={(e) => console.log(e.target)}
       />
     </div>

@@ -56,6 +56,7 @@ function SessionForm({
     e.preventDefault();
     if (sessionMovementsDoNotExist()) {
       handleSessionReset();
+      sessionStorage.setItem("chosenPage", "My Movement Summary");
       history.push("/home");
     } else {
       setShowMovementDetails(false);
@@ -75,7 +76,7 @@ function SessionForm({
           postMovement(session.id).then(() => {
             handleNewSession();
             handleSessionReset();
-            sessionStorage.setItem("chosenPage", "My Movement Details");
+            sessionStorage.setItem("chosenPage", "My Movement Summary");
             history.push("/home");
           });
         });
@@ -87,7 +88,7 @@ function SessionForm({
       postMovement(sessionId).then(() => {
         handleNewSession();
         handleSessionReset();
-        sessionStorage.setItem("chosenPage", "My Movement Details");
+        sessionStorage.setItem("chosenPage", "My Movement Summary");
         history.push("/home");
       });
     } else if (
@@ -96,7 +97,7 @@ function SessionForm({
     ) {
       handleNewSession();
       handleSessionReset();
-      sessionStorage.setItem("chosenPage", "My Movement Details");
+      sessionStorage.setItem("chosenPage", "My Movement Summary");
       history.push("/home");
     }
   }
@@ -142,7 +143,7 @@ function SessionForm({
     } else {
       deleteSession().then(() => {
         handleSessionReset();
-        sessionStorage.setItem("chosenPage", "My Movement Details");
+        sessionStorage.setItem("chosenPage", "My Movement Summary");
         history.push("/home");
       });
     }

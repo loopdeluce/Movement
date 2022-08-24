@@ -138,7 +138,7 @@ function SignupForm() {
 
           <button
             type="submit"
-            class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg"
+            class="block w-full px-5 py-3 text-sm font-medium text-white bg-jungle rounded-lg font-semibold hover:bg-jungle_800"
           >
             Sign up
           </button>
