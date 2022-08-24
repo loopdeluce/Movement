@@ -139,6 +139,7 @@ function SessionForm({
     e.preventDefault();
     if (sessionMovementsDoNotExist()) {
       handleSessionReset();
+      sessionStorage.setItem("chosenPage", "My Movement Summary");
       history.push("/home");
     } else {
       deleteSession().then(() => {

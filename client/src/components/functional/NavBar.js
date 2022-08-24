@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
 function NavBar() {
-  const [chosenPage, setChosenPage] = useState("My Movements");
+  const [chosenPage, setChosenPage] = useState("My Movement Summary");
   const history = useHistory();
   const userFullName = `${
     JSON.parse(sessionStorage.getItem("user")).first_name
@@ -20,6 +20,7 @@ function NavBar() {
         history.push("/home");
         break;
       case "Record a Movement":
+        setChosenPage("My Movement Summary");
         history.push("/home/tracker/movement");
         break;
     }

@@ -32,6 +32,7 @@ function LoginForm() {
           setErrors(data.errors);
         } else {
           handleUserChange(data);
+          sessionStorage.setItem("chosenPage", "My Movement Summary");
           sessionStorage.setItem("user", JSON.stringify(data));
           setFormData(initialFormData);
           history.push("/home");

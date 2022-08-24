@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import { UserContext } from "../../context/user";
 
 function SignupForm() {
   const initialFormData = {
@@ -11,6 +12,7 @@ function SignupForm() {
   };
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState([]);
+  const [user, handleUserChange] = useContext(UserContext);
   const history = useHistory();
 
   function handleInputChange(e) {
@@ -37,6 +39,7 @@ function SignupForm() {
             password_confirmation: "",
           });
         } else {
+          handleUserChange(data);
           sessionStorage.setItem("user", JSON.stringify(data));
           history.push("/home");
           setFormData(initialFormData);

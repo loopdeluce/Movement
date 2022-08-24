@@ -45,18 +45,34 @@ class ActivitiesController < ApplicationController
       area_series = []
 
       if params[:uom] === 'number'
-        movement_type_frequency = filtered_movements.reduce do |empty_hash, movement|
-          category = movement.movement_type.movement_type.to_sym
-          movement_hash[category] += 1
-          movement_hash
+        if filtered_movements.length === 1
+          category = filtered_movements.first.movement_type.movement_type.to_sym
+          movement_type_frequency = {}
+          movement_type_frequency[category] = filtered_movements.first.activity_stat.time_seconds
+        else
+          movement_type_frequency = filtered_movements.reduce do |empty_hash, movement|
+            category = movement.movement_type.movement_type.to_sym
+            movement_hash[category] += 1
+            movement_hash
+          end
         end
+        
 
-        all_frequency = filtered_by_year_activities.reduce do |empty_hash, movement|
-          category = movement.movement_type.movement_type.to_sym
-          movement_hash[category] += 1
-          movement_hash
+        if filtered_by_year_activities.length === 1
+          category = filtered_by_year_activities.first.movement_type.movement_type.to_sym
+          movement_hash[category] = 1
+          all_frequency = movement_hash
+        else
+          all_frequency = filtered_by_year_activities.reduce do |empty_hash, movement|
+            category = movement.movement_type.movement_type.to_sym
+            movement_hash[category] += 1
+            movement_hash
+          end
         end
+        
+
         all_frequency = all_frequency.sort_by{|key, value| value}.reverse.to_h
+
        
         (1..12).each do |n|
           wanted_activities = filtered_movements.where('extract(month from datetime_activity_finish) = ?', n)
@@ -72,17 +88,30 @@ class ActivitiesController < ApplicationController
         end
         
       else
-        movement_type_frequency = filtered_movements.reduce do |empty_hash, movement|
-          category = movement.movement_type.movement_type.to_sym
-          movement_hash[category] += movement.activity_stat.time_seconds
-          movement_hash
+        if filtered_movements.length === 1
+          category = filtered_movements.first.movement_type.movement_type.to_sym
+          movement_type_frequency = {}
+          movement_type_frequency[category] = filtered_movements.first.activity_stat.time_seconds
+        else
+          movement_type_frequency = filtered_movements.reduce do |empty_hash, movement|
+            category = movement.movement_type.movement_type.to_sym
+            movement_hash[category] += movement.activity_stat.time_seconds
+            movement_hash
+          end
+        end
+        
+        if filtered_by_year_activities.length === 1
+          category = filtered_by_year_activities.first.movement_type.movement_type.to_sym
+          movement_hash[category] = 1
+          all_frequency = movement_hash
+        else
+          all_frequency = filtered_by_year_activities.reduce do |empty_hash, movement|
+            category = movement.movement_type.movement_type.to_sym
+            movement_hash[category] += 1
+            movement_hash
+          end
         end
 
-        all_frequency = filtered_by_year_activities.reduce do |empty_hash, movement|
-          category = movement.movement_type.movement_type.to_sym
-          movement_hash[category] += movement.activity_stat.time_seconds
-          movement_hash
-        end
         all_frequency = all_frequency.sort_by{|key, value| value}.reverse.to_h
 
         (1..12).each do |n|

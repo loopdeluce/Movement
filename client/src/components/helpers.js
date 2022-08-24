@@ -9,7 +9,7 @@ export function timeOfDay(date = new Date()) {
   const hour = new Date(date).getHours();
   if (hour < 12) {
     return "Morning";
-  } else if (hour >= 12 && hour < 5) {
+  } else if (hour >= 12 && hour < 17) {
     return "Afternoon";
   } else {
     return "Evening";
