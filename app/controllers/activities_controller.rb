@@ -130,7 +130,7 @@ class ActivitiesController < ApplicationController
         end
       end
 
-      summary_hash[:total_days] = filtered_movements.map{|movement| movement.datetime_activity_finish}.uniq.length
+      summary_hash[:total_days] = filtered_movements.map{|movement| movement.datetime_activity_finish.strftime("%m/%d%Y")}.uniq.length
       
       total_secs = filtered_movements.map{|movement| movement.activity_stat.time_seconds}.inject(:+)
       summary_hash[:total_hours] = (total_secs.to_f / 3600).round(1)

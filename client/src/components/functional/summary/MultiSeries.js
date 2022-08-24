@@ -46,9 +46,9 @@ function MultiSeries() {
             text: "Average Exertion",
             style: { fontSize: "16px" },
           },
-          min: 1,
+          min: 0,
           max: 10,
-          tickAmount: 6,
+          tickAmount: 5,
           labels: { style: { fontSize: "16px" } },
         },
         {
