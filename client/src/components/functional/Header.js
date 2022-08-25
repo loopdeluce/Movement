@@ -9,6 +9,7 @@ function Header() {
       credentials: "include",
     }).then(() => {
       sessionStorage.setItem("user", null);
+      sessionStorage.setItem("chosenPage", "My Movement Summary");
       history.push("/");
     });
   }

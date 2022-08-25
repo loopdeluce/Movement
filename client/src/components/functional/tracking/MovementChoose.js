@@ -15,7 +15,7 @@ function MovementChoose({ movementTypes, selectedMovement, handleSelection }) {
     <div class="flex justify-center">
       <div class="space-y-2 pb-5 my-10 bg-white rounded-2xl w-9/12">
         <div class="flex pt-7 px-10  justify-between mb-5 ">
-          <h1 class=" text-xl sm:text-2xl font-bold text-left text-black sm:text-3xl">
+          <h1 class=" text-xl sm:text-2xl text-left text-black sm:text-3xl font-heading_bold">
             Choose a Movement
           </h1>
           <h2

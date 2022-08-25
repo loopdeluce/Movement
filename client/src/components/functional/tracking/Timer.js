@@ -77,7 +77,7 @@ function Timer({
     <div class="flex justify-center">
       <div class="my-10 bg-white rounded-2xl w-9/12 py-7 px-10">
         <div class="flex justify-between">
-          <h2 class=" text-xl sm:text-2xl font-bold text-left text-black sm:text-3xl">
+          <h2 class=" text-xl  text-left text-black sm:text-4xl font-heading_bold">
             <span class="font-normal text-gray-400">Movement:</span>{" "}
             {selectedMovement}
           </h2>
@@ -96,8 +96,14 @@ function Timer({
             {sessionStorage.getItem("hour") === null
               ? "00"
               : sessionStorage.getItem("hour")}
-            :{sessionStorage.getItem("minute") === null ? "00" : sessionStorage.getItem("minute")}:
-            {sessionStorage.getItem("second") === null ? "00" : sessionStorage.getItem("second")}
+            :
+            {sessionStorage.getItem("minute") === null
+              ? "00"
+              : sessionStorage.getItem("minute")}
+            :
+            {sessionStorage.getItem("second") === null
+              ? "00"
+              : sessionStorage.getItem("second")}
           </div>
         </div>
 

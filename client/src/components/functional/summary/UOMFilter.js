@@ -5,7 +5,7 @@ function UOMFilter({ unitOfMeasure, handleUnitOfMeasureChange }) {
   }
 
   return (
-    <div class="p-5 bg-white rounded-lg mt-10 ">
+    <div class="p-5 bg-white rounded-lg ">
       {/* <h3 class="mb-2 font-bold text-gray-800">Unit of Measure</h3> */}
       <form>
         <ul class="items-center w-full text-sm font-medium text-jungle bg-white shadow-md rounded-lg border-2 border-jungle sm:flex ">
@@ -21,7 +21,7 @@ function UOMFilter({ unitOfMeasure, handleUnitOfMeasureChange }) {
               />
               <label
                 for="number"
-                class="py-3 ml-2 w-full text-sm font-medium text-gray-800 font-semibold"
+                class="py-3 w-full text-sm font-medium text-gray-800 font-semibold"
               >
                 Number of Movements{" "}
               </label>
@@ -39,7 +39,7 @@ function UOMFilter({ unitOfMeasure, handleUnitOfMeasureChange }) {
               />
               <label
                 for="time"
-                class="py-3 ml-2 w-full text-sm font-medium text-gray-800 font-semibold"
+                class="py-3 w-full text-sm font-medium text-gray-800 font-semibold"
               >
                 Hours of Movement
               </label>

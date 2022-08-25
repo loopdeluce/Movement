@@ -21,24 +21,10 @@ function SummaryContainer({ readyToLoad }) {
 
   const history = useHistory({ readyToLoad });
 
-  console.log(
-    `/users/${JSON.parse(sessionStorage.getItem("user")).id}/activities/${
-      sessionStorage.getItem("uom") === null
-        ? "number"
-        : sessionStorage.getItem("uom")
-    }/${2022}`
-  );
-
-  console.log(sessionCounter);
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
 
   useEffect(() => {
-    console.log("sos");
-  }, []);
-
-  useEffect(() => {
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-
     fetch(
       `/users/${JSON.parse(sessionStorage.getItem("user")).id}/activities/${
         sessionStorage.getItem("uom") === null
@@ -72,15 +58,15 @@ function SummaryContainer({ readyToLoad }) {
   return (
     <>
       {initialRender ? (
-        <div class="flex w-full h-full justify-around items-center">
-          <div class="">
+        <div class="flex w-full h-full justify-around items-center ml-10">
+          <div class="bg-white mt-5 rounded-lg">
             {errors.length > 0 ? (
               errors.map((error) => {
                 return (
                   <div class="flex flex-col justify-around bg-white my-10  rounded-lg">
                     <h1
                       key={error}
-                      class="text-7xl text-black  font-heading_cursive px-40 pt-5"
+                      class="text-6xl text-black  font-heading_bold px-40 py-5 "
                     >
                       Welcome!
                     </h1>
@@ -97,13 +83,17 @@ function SummaryContainer({ readyToLoad }) {
               })
             ) : (
               <>
-                <div class="bg-white mt-5 ml-10 rounded-lg">
+                <h1 class=" text-xl sm:text-2xl text-center text-gray-800 sm:text-3xl mt-5 font-heading_bold">
+                  {`${currentYear} Movement Summary`}
+                </h1>
+                <div class="bg-white rounded-lg">
                   <UOMFilter
                     unitOfMeasure={unitOfMeasure}
                     handleUnitOfMeasureChange={handleUnitOfMeasureChange}
                   />
                 </div>
-                <div class="h-screen overflow-y-scroll bg-white mt-10 ml-10 rounded-lg w-max">
+                <div class="border-b-2 border-gray-300 mx-8 "></div>
+                <div class="h-screen overflow-y-scroll bg-white mt-10 rounded-lg w-max">
                   <div class="flex justify-around items-center">
                     <div>
                       <SummaryStats />
