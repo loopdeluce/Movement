@@ -59,7 +59,7 @@ function MyMovements() {
               })
             ) : (
               <div class="bg-white rounded-lg  m-24 flex items-center justify-center">
-                <h1 class="font-heading_cursive text-7xl py-5">Loading...</h1>
+                <h1 class="font-heading_bold text-7xl py-5">Loading...</h1>
               </div>
             )}
           </div>

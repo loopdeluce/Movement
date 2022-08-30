@@ -12,7 +12,13 @@ function NavBar() {
     e.preventDefault();
     setChosenPage(e.target.textContent);
     sessionStorage.setItem("chosenPage", e.target.textContent);
+    let page = "";
+
     switch (e.target.textContent) {
+      case `${JSON.parse(sessionStorage.getItem("user")).first_name} ${
+        JSON.parse(sessionStorage.getItem("user")).last_name
+      }`:
+        history.push("/home/user");
       case "My Movement Details":
         history.push("/home/details");
         break;
@@ -29,8 +35,16 @@ function NavBar() {
   return (
     <div class="flex flex-col gap-3  mt-10  sm:ml-10 ml-5 ">
       <button
-        disabled
-        class="text-left text-white text-sm sm:text-2xl py-2 px-5 font-heading_bold"
+        id="me"
+        class={`text-left text-white text-sm sm:text-2xl py-2 px-5 font-heading_bold hover:rounded-xl ${
+          sessionStorage.getItem("chosenPage") ===
+          `${JSON.parse(sessionStorage.getItem("user")).first_name} ${
+            JSON.parse(sessionStorage.getItem("user")).last_name
+          }`
+            ? "bg-jungle_500 rounded-xl"
+            : null
+        }`}
+        onClick={handleNavigation}
       >
         {userFullName}
       </button>
