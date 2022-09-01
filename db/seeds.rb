@@ -10,6 +10,7 @@ require "faker"
 
 puts "Seeding movement types..."
 
+speedwalk = MovementType.create(momovement_type: 'SpeedWalk', hex_color: '#116530', movement_type_category: "Foot Sports")
 hike = MovementType.create(movement_type: 'Hike', hex_color: '#116530', movement_type_category: "Foot Sports")
 run = MovementType.create(movement_type: 'Run', hex_color: '#116530', movement_type_category: "Foot Sports")
 trailRun = MovementType.create(movement_type: 'Trail Run', hex_color: '#116530', movement_type_category: "Foot Sports")
