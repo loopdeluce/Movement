@@ -18,8 +18,8 @@ export function timeOfDay(date = new Date()) {
 
 export function secondsToHoursMinutesSeconds(seconds) {
   const secondCounter = seconds % 60;
-  const minuteCounter = Math.floor(seconds / 60);
-  const hourCounter = Math.floor(seconds / 360);
+  const hourCounter = Math.floor(seconds / 3600);
+  const minuteCounter = Math.floor((seconds - hourCounter * 3600) / 60);
 
   const computedSecond =
     String(secondCounter).length === 1 ? `0${secondCounter}` : secondCounter;
