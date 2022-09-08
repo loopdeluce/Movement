@@ -3,7 +3,7 @@
 ## Flatiron capstone project built in ~3 weeks by Lucy Bullen
 
 Demo: https://www.youtube.com/watch?v=0kZziaGX_oQ
-Host Website: https://movement-moose.herokuapp.com/
+Hosted Website: https://movement-moose.herokuapp.com/
 
 ## Requirements
 
