@@ -10,6 +10,11 @@ function Header() {
     }).then(() => {
       sessionStorage.setItem("user", null);
       sessionStorage.setItem("chosenPage", "My Movement Summary");
+      sessionStorage.setItem("timer", 0);
+      sessionStorage.setItem("second", "00");
+      sessionStorage.setItem("minute", "00");
+      sessionStorage.setItem("hour", "00");
+      sessionStorage.setItem("uom", "number");
       history.push("/");
     });
   }
