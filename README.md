@@ -4,6 +4,7 @@
 
 Demo: https://www.youtube.com/watch?v=0kZziaGX_oQ
 Hosted Website: https://movement-moose.herokuapp.com/
+Planning: https://www.figma.com/file/HuYkjwEP8egrQBDUZQCD9r/Movement---DB-Schema-%26-Component-Tree?node-id=0%3A1
 
 ## Requirements
 
